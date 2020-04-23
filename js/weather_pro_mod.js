@@ -118,7 +118,7 @@ function aqicn() {
         try {
             var waqiObj = JSON.parse(response.body);
             if (waqiObj.status == 'error') {
-                $notify("Aqicn", "出错啦", waqiObj.data);
+                $notification.post("Aqicn", "出错啦", waqiObj.data);
             } else {
                 record(`天气数据获取-B1-${response.body}`);
                 provider.aqicn.data = {
@@ -334,7 +334,7 @@ function renderTemplate() {
         subtitle: execTemplate(config.show.template.subtitle, map),
         detail: execTemplate(config.show.template.detail, map),
     };
-    $notify(notifyInfo.title, notifyInfo.subtitle, notifyInfo.detail);
+    $notification.post(notifyInfo.title, notifyInfo.subtitle, notifyInfo.detail);
     $done({});
 }
 // #endregion
